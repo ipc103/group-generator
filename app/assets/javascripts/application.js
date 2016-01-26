@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
-//= require turbolinks
+//= require angular
+//= require angular-rails-templates
 //= require_tree ../../../vendor/assets/javascripts/.
 //= require_tree .
