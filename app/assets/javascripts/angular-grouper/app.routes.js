@@ -1,7 +1,6 @@
 groupApp.config(function($stateProvider){
 
   $stateProvider
-  
     .state('cohorts', {
       url: '/cohorts',
       templateUrl: '/app/components/cohorts/cohorts.html',
