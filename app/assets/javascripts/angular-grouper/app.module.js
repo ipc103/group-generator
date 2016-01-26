@@ -1,1 +1,1 @@
-var groupApp = angular.module('groupApp', ['ui.router', 'ngResource', 'angular.filter']);
+var groupApp = angular.module('groupApp', ['ui.router', 'ngResource', 'angular.filter', 'templates']);

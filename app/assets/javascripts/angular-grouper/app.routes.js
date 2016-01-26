@@ -3,8 +3,8 @@ groupApp.config(function($stateProvider){
   $stateProvider
     .state('cohorts', {
       url: '/cohorts',
-      templateUrl: '/app/components/cohorts/cohorts.html',
-      controller: 'CohortsCtrl as cohortsCtrl'
+      templateUrl: 'cohorts.html',
+      controller: 'CohortsCtrl as CohortsCtrl'
     })
 
     .state('cohort', {
