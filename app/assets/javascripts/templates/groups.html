@@ -2,3 +2,22 @@
 <div ng-if="GroupsController.groups.length === 0">
   <h4>This Cohort Has No Groups</h4>
 </div>
+
+<div ng-if="GroupsController.groups.length !== 0">
+  <label for="query">Filter By Student Name</label>
+  <input type="text" ng-model="query">
+  <ul>
+    <div ng-repeat="group in GroupsController.groups | filter:query | orderBy: group.code">
+      <div class="group-card">
+        
+        <li>{{ group.code }}</li>
+          <ul>
+            <div ng-repeat="student in group.students">
+              {{ student.name }}
+            </div>
+          </ul>
+      </div>
+
+    </div>
+  </ul>
+</div>

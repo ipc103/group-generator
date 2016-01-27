@@ -10,7 +10,7 @@ groupApp.config(function($stateProvider, $urlRouterProvider){
     .state('cohort.groups', {
       url: 'groups',
       templateUrl: 'groups.html',
-      controller: 'GroupsController as groupsCtrl'
+      controller: 'GroupsController as GroupsController'
     })
 
     $urlRouterProvider.otherwise('/')
