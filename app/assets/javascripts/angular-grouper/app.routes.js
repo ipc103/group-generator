@@ -1,21 +1,17 @@
-groupApp.config(function($stateProvider){
+groupApp.config(function($stateProvider, $urlRouterProvider){
 
   $stateProvider
-    .state('cohorts', {
-      url: '/cohorts',
+    .state('cohort', {
+      url: '/',
       templateUrl: 'cohorts.html',
       controller: 'CohortsCtrl as CohortsCtrl'
     })
 
-    .state('cohort', {
-      url: '/cohorts/:id',
-      templateUrl: '/app/components/cohorts/cohort/cohorts.cohort.html',
-      controller: 'CohortCtrl as cohortCtrl'
-    })
-
     .state('cohort.groups', {
-      url: '/groups',
-      templateUrl: '/app/components/groups/groups.html',
+      url: 'groups',
+      templateUrl: 'groups.html',
       controller: 'GroupsController as groupsCtrl'
     })
+
+    $urlRouterProvider.otherwise('/')
 })

@@ -1,1 +1,14 @@
-{{ CohortsCtrl.name }}
+<h2>{{ CohortsCtrl.cohort.name }}</h2>
+
+<div class="col-md-4">
+  <ul>
+    <div ng-repeat="student in CohortsCtrl.cohort.students">
+      <li>{{ student.name }}</li>
+    </div>
+  </ul>
+</div>
+
+<div class="col-md-8">
+  <a ui-sref="cohort.groups">See Groups For This Cohort</a>
+  <ui-view></ui-view>
+</div>

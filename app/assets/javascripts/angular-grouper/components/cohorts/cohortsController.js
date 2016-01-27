@@ -1,5 +1,5 @@
-function CohortsCtrl(){
-  this.name = "Ian";
+function CohortsCtrl(Cohort){
+  this.cohort = Cohort.get({id: 1});
 }
 
-groupApp.controller('CohortsCtrl', [CohortsCtrl])
+groupApp.controller('CohortsCtrl', ['Cohort', '$stateParams', CohortsCtrl])

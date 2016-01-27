@@ -4,17 +4,17 @@ class Group < ActiveRecord::Base
   has_many :students, :through => :student_groups
 
   def self.generate_groups(group_type_id, group_code, students, number_of_groups, people_per_group)
-    
+
     from_db = Group.where(code: group_code)
 
-    from_db.each do |record| 
+    from_db.each do |record|
       record.student_groups.each {|sg| sg.delete}
-      record.delete 
+      record.delete
     end
 
     last_group = nil
 
-    #create # of groups 
+    #create # of groups
     (1..number_of_groups).each do |i|
       new_group = Group.new
       new_group.group_type_id = group_type_id
@@ -25,8 +25,8 @@ class Group < ActiveRecord::Base
       (1..people_per_group).each do |s|
         new_student_group = StudentGroup.new
         new_student_group.group_id = new_group.id
-        
-        student_samples = students.sample(1) 
+
+        student_samples = students.sample(1)
         if student_samples.length > 0
           students.delete student_samples[0]
           new_student_group.student_id = student_samples[0].id
@@ -58,7 +58,7 @@ class Group < ActiveRecord::Base
         new_student_group.save
       end
     end
-    
+
   end
 
 
