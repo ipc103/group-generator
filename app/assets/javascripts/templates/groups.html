@@ -6,18 +6,16 @@
 <div ng-if="GroupsController.groups.length !== 0">
   <label for="query">Filter By Student Name</label>
   <input type="text" ng-model="query">
-  <ul>
     <div ng-repeat="group in GroupsController.groups | filter:query | orderBy: group.code">
-      <div class="group-card">
-        
-        <li>{{ group.code }}</li>
-          <ul>
-            <div ng-repeat="student in group.students">
-              {{ student.name }}
-            </div>
-          </ul>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        {{ group.code }}
       </div>
+        <div ng-repeat="student in group.students">
+          {{ student.name }}
+        </div>
+    </div>
 
     </div>
-  </ul>
 </div>
