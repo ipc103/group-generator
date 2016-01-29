@@ -1,14 +1,15 @@
 function GroupsController (Group){
   var id = window.location.pathname.split("/")[2]
-  this.groups = Group.query({cohort: id});
-  this.newGroup = new Group({cohort: id});
+  var self = this;
+  Group.query({cohort: id}, function(response){
+    self.groups = response;
+  });
 
   this.createGroups = function(groupTypes){
-    this.newGroup.group_types = groupTypes
+    var params = {cohort: id, group_types: groupTypes}
     var self = this;
-    this.newGroup.$save(function(response){
-      self.groups = Group.query({cohort: id });
-      self.newGroup = new Group({cohort: id});
+    Group.create(params, function(response){
+      self.groups = response;
     })
   }
 }

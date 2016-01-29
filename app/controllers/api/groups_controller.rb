@@ -36,7 +36,7 @@ class Api::GroupsController < ApplicationController
     Group.generate_groups(params[:group_types], group_code, students, number_of_groups, people_per_group)
     @groups = Group.joins(:students).where('students.cohort_id = ?', params[:cohort]).uniq
     respond_to do |f|
-      f.json {render json: {message: "Success!"}}
+      f.json {render json: @groups, include: :students}
     end
   end
 
