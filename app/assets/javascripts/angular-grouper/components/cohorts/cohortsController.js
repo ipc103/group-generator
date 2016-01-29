@@ -1,5 +1,6 @@
 function CohortsCtrl(Cohort){
-  this.cohort = Cohort.get({id: 1});
+  var id = window.location.pathname.split("/")[2]
+  this.cohort = Cohort.get({id: id});
 }
 
-groupApp.controller('CohortsCtrl', ['Cohort', '$stateParams', CohortsCtrl])
+groupApp.controller('CohortsCtrl', ['Cohort', CohortsCtrl])

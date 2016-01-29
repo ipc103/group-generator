@@ -6,7 +6,9 @@ class ApplicationController < ActionController::Base
   helper_method :is_admin, :current_user
 
   before_action :require_login
- 
+
+  
+
   private
     def current_user
       User.find(session[:user_id]) if session[:user_id]
@@ -15,7 +17,7 @@ class ApplicationController < ActionController::Base
     def is_admin
       if current_user && current_user.admin
         true
-      end 
+      end
       false
     end
 
@@ -37,7 +39,7 @@ class ApplicationController < ActionController::Base
       if !@user
         false
       else
-        session[:user_id] = @user.id 
+        session[:user_id] = @user.id
         true
       end
     end
