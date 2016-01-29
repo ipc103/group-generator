@@ -32,14 +32,19 @@ class Api::GroupsController < ApplicationController
       number_of_groups = GroupType.meetup_or_pair_group_type_size(student_count)
       people_per_group = 2
     end
-
-    code_suffix = '-' + params[:group_types]
-    group_code = params[:group_code] + code_suffix
+    group_code = generate_code(params[:group_types])
     Group.generate_groups(params[:group_types], group_code, students, number_of_groups, people_per_group)
     @groups = Group.joins(:students).where('students.cohort_id = ?', params[:cohort]).uniq
     respond_to do |f|
       f.json {render json: {message: "Success!"}}
     end
+  end
+
+  private
+
+  def generate_code(group_type)
+    code_suffix = '-' + group_type
+    group_code = current_user.github_username + Time.now.strftime('%Y%m%d') + code_suffix
   end
 
 end

@@ -7,6 +7,7 @@ function GroupsController (Group){
     this.newGroup.group_types = groupTypes
     var self = this;
     this.newGroup.$save(function(response){
+      debugger;
       self.groups = Group.query({cohort: id });
       self.newGroup = new Group({cohort: id});
     })

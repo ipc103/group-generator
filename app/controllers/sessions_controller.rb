@@ -1,13 +1,13 @@
 class SessionsController < ApplicationController
   skip_before_action :require_login, only: [:create]
-  
+
   def create
     @user = User.find_or_create_from_auth_hash(auth_hash)
     if login_user
       redirect_to_landing_page
     else
       flash[:message] = "You must be an admin to see the app!"
-      render "welcome/index" 
+      render "welcome/index"
     end
   end
 
